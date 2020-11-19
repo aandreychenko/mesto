@@ -1,0 +1,8 @@
+/* Сбрасываем стили */
+@import url(./vendor/normalize.css);
+
+/* Подключаем шрифты */
+@import url(./vendor/fonts.css);
+
+/* Свойства всей страницы */
+@import url(./blocks/page/page.css);
