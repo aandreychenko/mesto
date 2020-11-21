@@ -1,0 +1,11 @@
+.profile__edit-button {
+	width: 24px;
+	height: 24px;
+	border: 1px #fff solid;
+	background-color: #000;
+	box-sizing: border-box;
+	font-size: 0;
+	margin-left: 8px;
+	padding-bottom: 1px;
+	cursor: pointer;
+}
