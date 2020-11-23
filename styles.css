@@ -27,3 +27,7 @@
 @import url(./blocks/element/__image/element__image.css);
 @import url(./blocks/element/__place-name/element__place-name.css);
 @import url(./blocks/element/__like-button/element__like-button.css);
+
+/* Блок footer */
+@import url(./blocks/footer/footer.css);
+@import url(./blocks/footer/__copyright/footer__copyright.css);
