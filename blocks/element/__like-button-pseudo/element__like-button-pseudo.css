@@ -1,0 +1,11 @@
+.element__like-button-pseudo {
+	display: inline-block;
+	background-image: url(../../../images/icon-like.svg);
+	background-repeat: no-repeat;
+	width: 21px;
+	height: 19px;
+}
+
+.element__like-button:checked + .element__like-button-pseudo {
+	background-image: url(../../../images/icon-like__active.svg);
+}

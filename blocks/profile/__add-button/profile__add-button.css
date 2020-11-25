@@ -14,3 +14,7 @@
 		width: calc(100% - 38px);
 	}
 }
+
+.profile__add-button:hover {
+	opacity: .6;
+}

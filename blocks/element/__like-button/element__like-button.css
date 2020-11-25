@@ -1,7 +1,9 @@
 .element__like-button {
-	margin-right: 12px;
-	margin-top: 3px;
+	margin: 0;
 	background-color: #fff;
 	border: none;
-	cursor: pointer;
+	width: 0px;
+  height: 0px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
 }

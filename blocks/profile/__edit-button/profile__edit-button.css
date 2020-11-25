@@ -9,3 +9,7 @@
 	padding-bottom: 1px;
 	cursor: pointer;
 }
+
+.profile__edit-button:hover {
+	opacity: .6;
+}

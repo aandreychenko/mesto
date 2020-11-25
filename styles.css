@@ -23,10 +23,14 @@
 /* Блок elements */
 @import url(./blocks/elements/elements.css);
 @import url(./blocks/element/element.css);
+
+/* Блок element */
 @import url(./blocks/element/__info/element__info.css);
 @import url(./blocks/element/__image/element__image.css);
 @import url(./blocks/element/__place-name/element__place-name.css);
 @import url(./blocks/element/__like-button/element__like-button.css);
+@import url(./blocks/element/__like-button-label/element__like-button-label.css);
+@import url(./blocks/element/__like-button-pseudo/element__like-button-pseudo.css);
 
 /* Блок footer */
 @import url(./blocks/footer/footer.css);
