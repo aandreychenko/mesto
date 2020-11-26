@@ -1,31 +1,32 @@
 // Включаем возможность открывать и закрывать окно редактирования профиля
 
 let profileEditButton = document.querySelector('.profile__edit-button');
-let editForm = document.querySelector('.edit-form');
-let editFormCloseIcon = document.querySelector('.edit-form__close-icon');
-let editFormSubmitButton = document.querySelector('.edit-form__submit-button');
+let popup = document.querySelector('.popup');
+let popupOpened = document.querySelector('.popup_opened');
+let popupCloseIcon = document.querySelector('.popup__close-icon');
+let popupSubmitButton = document.querySelector('.popup__submit-button');
 
 let profileName = document.querySelector('.profile__name');
 let profileCaption = document.querySelector('.profile__caption');
-let editFormName = document.querySelector('.edit-form__name');
-let editFormCaption = document.querySelector('.edit-form__caption');
+let popupName = document.querySelector('.popup__name');
+let popupCaption = document.querySelector('.popup__caption');
 
-function ShowEditForm() {
-	editForm.setAttribute('style', 'display: block');
-	editFormName.setAttribute('value', profileName.textContent);
-	editFormCaption.setAttribute('value', profileCaption.textContent);
+function ShowPopup() {
+	popup.classList.add('popup_opened');
+	popupName.setAttribute('value', profileName.textContent);
+	popupCaption.setAttribute('value', profileCaption.textContent);
 }
 
-function CloseEditForm() {
-	editForm.setAttribute('style', 'display: none');
+function ClosePopup() {
+	popup.classList.remove('popup_opened');
 }
 
 function SetNewProfileInfo() {
-	profileName.textContent = document.querySelector('.edit-form__name').value;
-	profileCaption.textContent = document.querySelector('.edit-form__caption').value;
-	CloseEditForm();
+	profileName.textContent = document.querySelector('.popup__name').value;
+	profileCaption.textContent = document.querySelector('.popup__caption').value;
+	ClosePopup();
 }
 
-profileEditButton.addEventListener('click', ShowEditForm);
-editFormCloseIcon.addEventListener('click', CloseEditForm);
-editFormSubmitButton.addEventListener('click', SetNewProfileInfo);
+profileEditButton.addEventListener('click', ShowPopup);
+popupCloseIcon.addEventListener('click', ClosePopup);
+popupSubmitButton.addEventListener('click', SetNewProfileInfo);

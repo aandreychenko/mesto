@@ -1,4 +1,4 @@
-.edit-form__heading {
+.popup__heading {
 	font-family: inherit;
 	font-style: normal;
 	font-weight: 900;
@@ -10,7 +10,7 @@
 }
 
 @media screen and (max-width: 768px) {
-.edit-form__heading {
+.popup__heading {
 		font-family: inherit;
 		font-style: normal;
 		font-weight: 900;
