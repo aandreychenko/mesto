@@ -5,16 +5,17 @@
 	font-size: 18px;
 	line-height: 22px;
 	margin: 0;
+	margin-right: 50px;
 	color: #fff;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  max-width: 500px;
 }
 
 @media screen and (max-width: 768px) {
 	.profile__caption {
 		margin-top: 0;
+		margin-right: 0;
 		grid-template-columns: 1fr;
 		grid-template-rows: 120px 52px 28px 1fr;
 		justify-items: center;
@@ -22,5 +23,6 @@
 		font-size: 14px;
 		line-height: 17px;
 		text-align: center;
+		max-width: calc(100vw - 38px);
 	}
 }
