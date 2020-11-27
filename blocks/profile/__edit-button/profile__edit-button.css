@@ -8,6 +8,9 @@
 	background-color: #000;
 	box-sizing: border-box;
 	cursor: pointer;
+	background-image: url(../../../images/icon-edit.svg);
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
 .profile__edit-button:hover {

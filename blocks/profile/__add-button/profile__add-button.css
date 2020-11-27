@@ -6,6 +6,9 @@
 	box-sizing: border-box;
 	padding-top: 4px;
 	cursor: pointer;
+	background-image: url(../../../images/icon-plus.svg);
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
 @media screen and (max-width: 768px) {
