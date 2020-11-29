@@ -11,6 +11,7 @@
 	background-image: url(../../../images/icon-edit.svg);
 	background-repeat: no-repeat;
 	background-position: center;
+	transition: .2s ease-in-out;
 }
 
 .profile__edit-button:hover {

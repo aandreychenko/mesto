@@ -1,5 +1,4 @@
 .profile__caption {
-	font-family: Inter;
 	font-style: normal;
 	font-weight: 400;
 	font-size: 18px;
@@ -14,12 +13,10 @@
 
 @media screen and (max-width: 768px) {
 	.profile__caption {
-		margin-top: 0;
 		margin-right: 0;
 		grid-template-columns: 1fr;
 		grid-template-rows: 120px 52px 28px 1fr;
 		justify-items: center;
-		font-family: Inter;
 		font-size: 14px;
 		line-height: 17px;
 		text-align: center;

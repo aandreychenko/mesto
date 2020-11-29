@@ -5,28 +5,41 @@ let popup = document.querySelector('.popup');
 let popupOpened = document.querySelector('.popup_opened');
 let popupCloseIcon = document.querySelector('.popup__close-icon');
 let popupSubmitButton = document.querySelector('.popup__submit-button');
+let popupContainer = document.querySelector('.popup__container');
 
 let profileName = document.querySelector('.profile__name');
 let profileCaption = document.querySelector('.profile__caption');
 let popupName = document.querySelector('.popup__name');
 let popupCaption = document.querySelector('.popup__caption');
 
-function ShowPopup() {
+function showPopup() {
+	popupName.value = profileName.textContent;
+	popupCaption.value = profileCaption.textContent;
 	popup.classList.add('popup_opened');
-	popupName.setAttribute('value', profileName.textContent);
-	popupCaption.setAttribute('value', profileCaption.textContent);
 }
 
-function ClosePopup() {
+function closePopup() {
 	popup.classList.remove('popup_opened');
 }
 
-function SetNewProfileInfo() {
-	profileName.textContent = document.querySelector('.popup__name').value;
-	profileCaption.textContent = document.querySelector('.popup__caption').value;
-	ClosePopup();
+function setNewProfileInfo() {
+	event.preventDefault();
+	profileName.textContent = popupName.value;
+	profileCaption.textContent = popupCaption.value;
+	closePopup();
 }
 
-profileEditButton.addEventListener('click', ShowPopup);
-popupCloseIcon.addEventListener('click', ClosePopup);
-popupSubmitButton.addEventListener('click', SetNewProfileInfo);
+function like() {
+	document.querySelectorAll('.element__like-button')
+	.forEach(function(button) {
+	  button.addEventListener('click', function() {
+	  	this.classList.toggle('element__like-button_active')
+	  });
+	});
+};
+
+profileEditButton.addEventListener('click', showPopup);
+popupCloseIcon.addEventListener('click', closePopup);
+popupContainer.addEventListener('submit', setNewProfileInfo);
+
+like();

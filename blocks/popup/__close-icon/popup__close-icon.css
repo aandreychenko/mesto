@@ -11,6 +11,7 @@
 	background-image: url(../../../images/icon-close.svg);
 	background-repeat: no-repeat;
 	background-position: center;
+	transition: .2s ease-in-out;
 }
 
 .popup__close-icon:hover {

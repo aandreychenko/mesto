@@ -1,6 +1,5 @@
 .element__place-name {
 	position: relative;
-	font-family: Inter;
 	font-style: normal;
 	font-weight: 900;
 	font-size: 24px;
@@ -9,4 +8,5 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  max-width: 190px;
 }

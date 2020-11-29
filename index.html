@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Mesto</title>
-	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="./pages/index.css">
 </head>
 <body>
 	<div class="page">
@@ -17,86 +17,68 @@
 				<div class="profile__info">
 					<div class="profile__info-heading">
 						<h1 class="profile__name">Жак-Ив Кусто</h1>
-						<button class="profile__edit-button"></button>
+						<button type="button" class="profile__edit-button" aria-label="Кнопка редактирования профиля"></button>
 					</div>
 					<p class="profile__caption">Исследователь океана</p>
 				</div>
-				<button class="profile__add-button"></button>
+				<button type="button" class="profile__add-button" aria-label="Кнопка добавления карточки"></button>
 			</section>
 			<section class="elements">
-				<div class="element">
+				<article class="element">
 					<img class="element__image" src="./images/element__image-petra.jpg" alt="Иордания, Петра">
 					<div class="element__info">
-						<p class="element__place-name">Петра</p>
-						<label for="6" class="element__like-button-label">
-              <input type="checkbox" name="like-button" id="6" class="element__like-button" value="6">
-              <span class="element__like-button-pseudo"></span>
-            </label>
+						<h2 class="element__place-name">Петра</h2>
+						<button type="button" class="element__like-button"></button>
 					</div>
-				</div>
-				<div class="element">
+				</article>
+				<article class="element">
 					<img class="element__image" src="./images/element__image-dubai.jpg" alt="ОАЭ, Дубай">
 					<div class="element__info">
-						<p class="element__place-name">Дубай</p>
-						<label for="5" class="element__like-button-label">
-              <input type="checkbox" name="like-button" id="5" class="element__like-button" value="5">
-              <span class="element__like-button-pseudo"></span>
-            </label>
+						<h2 class="element__place-name">Дубай</h2>
+						<button type="button" class="element__like-button"></button>
 					</div>
-				</div>
-				<div class="element">
+				</article>
+				<article class="element">
 					<img class="element__image" src="./images/element__image-abudabi.jpg" alt="ОАЭ, Абу Даби">
 					<div class="element__info">
-						<p class="element__place-name">Абу Даби</p>
-						<label for="4" class="element__like-button-label">
-              <input type="checkbox" name="like-button" id="4" class="element__like-button" value="4">
-              <span class="element__like-button-pseudo"></span>
-            </label>
+						<h2 class="element__place-name">Абу Даби</h2>
+						<button type="button" class="element__like-button"></button>
 					</div>
-				</div>
-				<div class="element">
+				</article>
+				<article class="element">
 					<img class="element__image" src="./images/element__image-minsk.jpg" alt="Белоруссия, Минск">
 					<div class="element__info">
-						<p class="element__place-name">Минск</p>
-						<label for="3" class="element__like-button-label">
-              <input type="checkbox" name="like-button" id="3" class="element__like-button" value="3">
-              <span class="element__like-button-pseudo"></span>
-            </label>
+						<h2 class="element__place-name">Минск</h2>
+						<button type="button" class="element__like-button"></button>
 					</div>
-				</div>
-				<div class="element">
+				</article>
+				<article class="element">
 					<img class="element__image" src="./images/element__image-amman.jpg" alt="Иордания, пустыня Вади Рам">
 					<div class="element__info">
-						<p class="element__place-name">Вади Рам</p>
-						<label for="2" class="element__like-button-label">
-              <input type="checkbox" name="like-button" id="2" class="element__like-button" value="2">
-              <span class="element__like-button-pseudo"></span>
-            </label>
+						<h2 class="element__place-name">Вади Рам</h2>
+						<button type="button" class="element__like-button"></button>
 					</div>
-				</div>
-				<div class="element">
+				</article>
+				<article class="element">
 					<img class="element__image" src="./images/element__image-beirut.jpg" alt="Ливан, Бейрут">
 					<div class="element__info">
-						<p class="element__place-name">Бейрут</p>
-						<label for="1" class="element__like-button-label">
-              <input type="checkbox" name="like-button" id="1" class="element__like-button" value="1">
-              <span class="element__like-button-pseudo"></span>
-            </label>
+						<h2 class="element__place-name">Бейрут</h2>
+						<button type="button" class="element__like-button"></button>
 					</div>
-				</div>
+				</article>
 			</section>
 		</main>
 		<footer class="footer">
 			<p class="footer__copyright">© 2020 Mesto Russia</p>
 		</footer>
 		<div class="popup">
-			<div class="popup__container">
-				<h1 class="popup__heading">Редактировать профиль</h1>
-				<input type="text" class="popup__field popup__name">
-				<input type="text" class="popup__field popup__caption">
-				<button class="popup__submit-button">Сохранить</button>
-				<button class="popup__close-icon"></button>
-			</div>
+			<form class="popup__container" name="profile-edit">
+				<h3 class="popup__heading">Редактировать профиль</h3>
+				<input type="text" name="username" class="popup__field popup__name" aria-label="Поле ввода имени профиля">
+				<input type="text" name="profile-caption" class="popup__field popup__caption" aria-label="Поле ввода описания профиля">
+				<button type="submit" name="submit-button" class="popup__submit-button" aria-labelledby="Кнопка сохранения изменений в описании профиля">Сохранить</button>
+				<button type="button" name="close-button" class="popup__close-icon" aria-label="Кнопка закрытия формы редактирования профиля"></button>
+			</form>
 		</div>
 	</div>
 	<script src="script.js"></script>

@@ -2,6 +2,7 @@
 	width: 150px;
 	height: 50px;
 	border: 2px #fff solid;
+	border-radius: 2px;
 	background-color: #000;
 	box-sizing: border-box;
 	padding-top: 4px;
@@ -9,6 +10,7 @@
 	background-image: url(../../../images/icon-plus.svg);
 	background-repeat: no-repeat;
 	background-position: center;
+	transition: .2s ease-in-out;
 }
 
 @media screen and (max-width: 768px) {

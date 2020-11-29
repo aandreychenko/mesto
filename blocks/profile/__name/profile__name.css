@@ -1,6 +1,5 @@
 .profile__name {
 	display: inline-block;
-	font-family: Inter;
 	font-style: normal;
 	font-weight: 500;
 	font-size: 42px;
@@ -16,11 +15,9 @@
 
 @media screen and (max-width: 768px) {
 	.profile__name {
-		margin-top: 0;
 		margin-bottom: 2px;
 		grid-template-columns: 1fr;
 		grid-template-rows: 120px 52px 28px 1fr;
-		font-family: Inter;
 		font-size: 27px;
 		line-height: 33px;
 		text-align: center;

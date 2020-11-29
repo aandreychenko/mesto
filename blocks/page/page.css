@@ -8,6 +8,7 @@
   -moz-text-size-adjust: 100%;
   /* Подгонка размера текста */
 
+  font-family: Inter, Arial, sans-serif;
   background-color: #000;
   min-width: 320px;
 }
