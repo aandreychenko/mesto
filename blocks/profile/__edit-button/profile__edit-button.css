@@ -20,6 +20,7 @@
 
 @media screen and (max-width: 768px) {
 	.profile__edit-button {
+		margin-top: 0;
 		transform: scale(0.75);
 	}
 }

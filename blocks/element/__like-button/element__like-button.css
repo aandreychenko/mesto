@@ -13,12 +13,3 @@
 .element__like-button:hover {
 	opacity: .5;
 }
-
-/*.element__like-button {
-	margin: 0;
-	background-color: #fff;
-	border: none;
-	width: 0px;
-  height: 0px;
-  clip: rect(0 0 0 0);
-}*/
