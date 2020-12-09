@@ -124,7 +124,33 @@ function makePlaceCard (item) {
   placeCard.querySelector('.element__place-name').textContent = item.name;
 
   elementsContainer.prepend(placeCard);
+  deleteCard();
 }
+
+//Cards deleting function
+function deleteCard() {
+  document.querySelectorAll('.element__trash-button').forEach(function(button) {
+    button.addEventListener('click', function() {
+      this.parentElement.remove();
+    });
+  });
+};
+
+
+function like() {
+  document.querySelectorAll('.element__like-button')
+      .forEach(function(button) {
+        button.addEventListener('click', function() {
+          this.classList.toggle('element__like-button_active')
+        });
+      });
+}
+
+
+
 
 //Initializing likes
 like();
+
+//Initializing deleting card function
+deleteCard();
