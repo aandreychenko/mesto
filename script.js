@@ -125,6 +125,8 @@ function makePlaceCard (item) {
 
   elementsContainer.prepend(placeCard);
   deleteCard();
+  like();
+  imageViewport();
 }
 
 //Cards deleting function
@@ -134,19 +136,38 @@ function deleteCard() {
       this.parentElement.remove();
     });
   });
-};
-
-
-function like() {
-  document.querySelectorAll('.element__like-button')
-      .forEach(function(button) {
-        button.addEventListener('click', function() {
-          this.classList.toggle('element__like-button_active')
-        });
-      });
 }
 
 
+//Photo opening
+let popupImage = document.querySelector('.popup_image');
+let popupImageView = document.querySelector('.popup__image');
+let popupImageCaption = document.querySelector('.popup__image-caption');
+let popupImageCloseButton = document.querySelector('.popup__close-icon_image');
+
+
+function imageViewport() {
+  document.querySelectorAll('.element__image').forEach(function (image) {
+    image.addEventListener ('click', function showImagePopup() {
+      popupImageView.src = this.src;
+      let element = this.parentElement;
+      let placeName = element.querySelector('.element__place-name');
+      console.log(placeName.textContent);
+      popupImageCaption.textContent = placeName.textContent;
+      console.log(popupImageCaption.textContent);
+      popupImage.classList.add('popup_opened');
+    });
+  });
+}
+
+function closeImagePopup() {
+  popupImage.classList.remove('popup_opened');
+}
+
+popupImageCloseButton.addEventListener('click', closeImagePopup);
+
+//Initializing
+imageViewport();
 
 
 //Initializing likes
