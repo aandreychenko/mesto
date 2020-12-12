@@ -56,6 +56,9 @@ function placeCardPublic() {
   event.preventDefault();
   let item = {name: popupAddPlaceName.value, link: popupAddPlaceLink.value};
   makePlaceCard (item);
+  like();
+  deleteCard();
+  imageViewport();
   closeAddPlacePopup();
   popupAddPlaceName.value = '';
   popupAddPlaceLink.value = '';
@@ -76,6 +79,7 @@ function like() {
   document.querySelectorAll('.element__like-button')
       .forEach(function(button) {
         button.addEventListener('click', function() {
+          console.log(this);
           this.classList.toggle('element__like-button_active')
         });
       });
@@ -124,9 +128,6 @@ function makePlaceCard (item) {
   placeCard.querySelector('.element__place-name').textContent = item.name;
 
   elementsContainer.prepend(placeCard);
-  deleteCard();
-  like();
-  imageViewport();
 }
 
 //Cards deleting function
@@ -168,7 +169,6 @@ popupImageCloseButton.addEventListener('click', closeImagePopup);
 
 //Initializing
 imageViewport();
-
 
 //Initializing likes
 like();
