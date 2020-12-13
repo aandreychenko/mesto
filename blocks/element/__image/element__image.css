@@ -1,5 +1,12 @@
 .element__image {
-	width: 282px;
-	height: 282px;
+	min-height: 282px;
+	min-width: 282px;
+	max-width: 282px;
+	max-height: 282px;
 	object-fit: cover;
+	transition: .2s ease-in-out;
+}
+
+.element__image:hover {
+	opacity: .8;
 }
