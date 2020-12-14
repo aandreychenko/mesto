@@ -1,13 +1,13 @@
 //PROFILE EDIT
 //Profile edit elements
-let profileEditButton = document.querySelector('.profile__edit-button');
-let popupProfileEdit = document.querySelector('.popup_profile-edit');
-let popupProfileEditCloseIcon = document.querySelector('.popup__close-icon_profile-edit');
-let popupProfileEditContainer = document.querySelector('.popup__container_profile-edit');
-let profileName = document.querySelector('.profile__name');
-let profileCaption = document.querySelector('.profile__caption');
-let popupProfileEditName = document.querySelector('.popup__name_profile-edit');
-let popupProfileEditCaption = document.querySelector('.popup__caption_profile-edit');
+const profileEditButton = document.querySelector('.profile__edit-button');
+const popupProfileEdit = document.querySelector('.popup_profile-edit');
+const popupProfileEditCloseIcon = document.querySelector('.popup__close-icon_profile-edit');
+const popupProfileEditContainer = document.querySelector('.popup__container_profile-edit');
+const profileName = document.querySelector('.profile__name');
+const profileCaption = document.querySelector('.profile__caption');
+const popupProfileEditName = document.querySelector('.popup__name_profile-edit');
+const popupProfileEditCaption = document.querySelector('.popup__caption_profile-edit');
 
 //Profile edit events
 profileEditButton.addEventListener('click', showProfileEditPopup);
