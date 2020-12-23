@@ -32,10 +32,10 @@
     <div class="popup popup_profile-edit">
       <form class="popup__container popup__container_profile-edit popup__form" name="profile-edit" novalidate>
         <h3 class="popup__heading popup__heading_profile-edit">Редактировать профиль</h3>
-        <input type="text" name="username" class="popup__field popup__name popup__name_profile-edit popup__input popup__input_type_error" id="popup__name_profile-edit" aria-label="Имя профиля" required minlength="2" maxlength="40">
-        <span class="popup__error_visible popup__name_profile-edit-error"></span>
-        <input type="text" name="profile-caption" class="popup__field popup__caption popup__caption_profile-edit popup__input popup__input_type_error" id="popup__caption_profile-edit" aria-label="Описание профиля" required minlength="2" maxlength="200">
-        <span class="popup__error_visible popup__caption_profile-edit-error"></span>
+        <input type="text" name="username" class="popup__field popup__name popup__name_profile-edit popup__input" id="popup__name_profile-edit" aria-label="Имя профиля" required minlength="2" maxlength="40">
+        <span class="popup__error popup__error_visible popup__name_profile-edit-error"></span>
+        <input type="text" name="profile-caption" class="popup__field popup__caption popup__caption_profile-edit popup__input" id="popup__caption_profile-edit" aria-label="Описание профиля" required minlength="2" maxlength="200">
+        <span class="popup__error popup__error_visible popup__caption_profile-edit-error"></span>
         <button type="submit" name="submit-button" class="popup__submit-button popup__submit-button_profile-edit popup__button popup__button_disabled" id="popup__submit-button" aria-labelledby="popup__submit-button">Сохранить</button>
         <button type="button" name="close-button" class="popup__close-icon popup__close-icon_profile-edit" aria-label="Закрыть форму редактирования профиля"></button>
       </form>
@@ -43,10 +43,10 @@
     <div class="popup popup_add-place popup__error_visible">
       <form class="popup__container popup__container_add-place popup__form" name="add-place" novalidate>
         <h3 class="popup__heading popup__heading_add-place">Новое место</h3>
-        <input type="text" name="place" class="popup__field popup__name popup__name_add-place popup__input popup__input_type_error" id ="popup__name_add-place" placeholder="Название" aria-label="Название" required minlength="2" maxlength="30">
-        <span class="popup__error_visible popup__name_add-place-error"></span>
-        <input type="url" name="image-link" class="popup__field popup__caption popup__caption_add-place popup__input popup__input_type_error" id="popup__caption_add-place" placeholder="Ссылка на картинку" aria-label="Ссылка на картинку" required minlength="1">
-        <span class="popup__error_visible popup__caption_add-place-error"></span>
+        <input type="text" name="place" class="popup__field popup__name popup__name_add-place popup__input" id ="popup__name_add-place" placeholder="Название" aria-label="Название" required minlength="2" maxlength="30">
+        <span class="popup__error popup__error_visible popup__name_add-place-error"></span>
+        <input type="url" name="image-link" class="popup__field popup__caption popup__caption_add-place popup__input" id="popup__caption_add-place" placeholder="Ссылка на картинку" aria-label="Ссылка на картинку" required minlength="1">
+        <span class="popup__error popup__error_visible popup__caption_add-place-error"></span>
         <button type="submit" name="submit-place-button" class="popup__submit-button popup__submit-button_add-place popup__button popup__button_disabled" id="popup__submit-place-button" aria-labelledby="popup__submit-button">Создать</button>
         <button type="button" name="close-button" class="popup__close-icon popup__close-icon_add-place" aria-label="Закрыть форму добавления места"></button>
       </form>

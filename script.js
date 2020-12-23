@@ -26,8 +26,8 @@ function showProfileEditPopup() {
   openPopup(popupProfileEdit);
 }
 
-function setNewProfileInfo() {
-  event.preventDefault();
+function setNewProfileInfo(evt) {
+  evt.preventDefault();
   profileName.textContent = popupProfileEditName.value;
   profileCaption.textContent = popupProfileEditCaption.value;
   closePopup(popupProfileEdit);
@@ -56,8 +56,8 @@ popupAddPlaceContainer.addEventListener('submit', placeCardPublic);
 
 //Place card functions
 //Publishing card from the adding form
-function placeCardPublic() {
-  event.preventDefault();
+function placeCardPublic(evt) {
+  evt.preventDefault();
   const item = {name: popupAddPlaceName.value, link: popupAddPlaceLink.value};
   makePlaceCard (item);
   closePopup(popupAddPlace);
@@ -116,6 +116,7 @@ function openPopup(popup) {
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
+
 
 //INITIAL CARDS RENDER
 //Initial cards elements
