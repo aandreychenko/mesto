@@ -110,11 +110,30 @@ popupImageCloseButton.addEventListener('click', function() {
 //Show popup function
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  easyClose();
 }
 
 //Close popup function
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+}
+
+//Close popup by clicking on empty space and Esc button pressing
+
+const easyClose = () => {
+    const popupElement = document.querySelector('.popup_opened');
+
+    addEventListener('keydown', function (evt) {
+        if (evt.key === 'Escape') {
+            closePopup(popupElement);
+        }
+    });
+
+    popupElement.addEventListener('click', function (evt) {
+        if (evt.target === popupElement) {
+            closePopup(popupElement);
+        }
+    });
 }
 
 
