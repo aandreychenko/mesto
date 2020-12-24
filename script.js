@@ -18,7 +18,6 @@ popupProfileEditCloseIcon.addEventListener('click', function() {
 
 popupProfileEditContainer.addEventListener('submit', setNewProfileInfo);
 
-
 //Profile edit functions
 function showProfileEditPopup() {
   popupProfileEditName.value = profileName.textContent;
@@ -32,7 +31,6 @@ function setNewProfileInfo(evt) {
   profileCaption.textContent = popupProfileEditCaption.value;
   closePopup(popupProfileEdit);
 }
-
 
 //PLACE CARDS
 //Place card elements
@@ -119,7 +117,6 @@ function closePopup(popup) {
 }
 
 //Close popup by clicking on empty space and Esc button pressing
-
 const easyClose = () => {
     const popupElement = document.querySelector('.popup_opened');
 
@@ -135,7 +132,6 @@ const easyClose = () => {
         }
     });
 }
-
 
 //INITIAL CARDS RENDER
 //Initial cards elements
