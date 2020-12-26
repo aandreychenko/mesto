@@ -1,4 +1,4 @@
-//GLOBAL ELEMENTS
+//INPUT FIELDS SEARCHING
 const popupInputList = (container) => {
   return Array.from(container.querySelectorAll('.popup__field'));
 }
@@ -72,30 +72,28 @@ popupAddPlaceContainer.addEventListener('submit', placeCardPublic);
 function placeCardPublic(evt) {
   evt.preventDefault();
   const item = {name: popupAddPlaceName.value, link: popupAddPlaceLink.value};
-  makePlaceCard (item);
+  addCard(elementsContainer, createCard(item));
   closePopup(popupAddPlace);
   popupAddPlaceContainer.reset();
   toggleButtonState(popupInputList(popupAddPlaceContainer), popupAddPlaceSubmitButton, validationConfig);
 }
 
-//Function that makes place cards
-function makePlaceCard (item) {
-  const placeCard = elementTemplate.cloneNode(true);
-  //Assigning image source and place name
-  placeCard.querySelector('.element__image').src = item.link;
-  placeCard.querySelector('.element__place-name').textContent = item.name;
-  //Adding like function
-  placeCard.querySelector('.element__like-button')
+const like = (card) => {
+  card.querySelector('.element__like-button')
       .addEventListener('click', function() {
         this.classList.toggle('element__like-button_active')
       });
-  //Adding card deleting function
-  placeCard.querySelector('.element__trash-button')
+}
+
+const cardDelete = (card) => {
+  card.querySelector('.element__trash-button')
       .addEventListener('click', function() {
         this.parentElement.remove();
       });
-  //Adding image viewer popup function
-  placeCard.querySelector('.element__image')
+}
+
+const popupViewer = (card) => {
+  card.querySelector('.element__image')
       .addEventListener ('click', function showImagePopup() {
         popupImageView.src = this.src;
         const element = this.parentElement;
@@ -103,8 +101,24 @@ function makePlaceCard (item) {
         popupImageCaption.textContent = placeName.textContent;
         openPopup(popupImage);
       });
+}
 
-  elementsContainer.prepend(placeCard);
+function createCard(item) {
+  const placeCard = elementTemplate.cloneNode(true);
+  //Assigning image source and place name
+  placeCard.querySelector('.element__image').src = item.link;
+  placeCard.querySelector('.element__place-name').textContent = item.name;
+  //Adding like function
+  like(placeCard);
+  //Adding card deleting function
+  cardDelete(placeCard);
+  //Adding image viewer popup function
+  popupViewer(placeCard);
+  return placeCard;
+}
+
+function addCard(container, card) {
+  container.prepend(card);
 }
 
 //IMAGE VIEWER
@@ -155,4 +169,6 @@ const elementsContainer = document.querySelector('.elements');
 const elementTemplate = document.querySelector('#element').content;
 
 //Initial cards producing
-initialCards.forEach(makePlaceCard);
+initialCards.forEach(function (item) {
+  addCard(elementsContainer, createCard(item));
+});
