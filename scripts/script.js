@@ -1,3 +1,8 @@
+//GLOBAL ELEMENTS
+const popupInputList = (container) => {
+  return Array.from(container.querySelectorAll('.popup__field'));
+}
+
 //PROFILE EDIT
 //Profile edit elements
 const profileEditButton = document.querySelector('.profile__edit-button');
@@ -8,6 +13,7 @@ const profileName = document.querySelector('.profile__name');
 const profileCaption = document.querySelector('.profile__caption');
 const popupProfileEditName = document.querySelector('.popup__name_profile-edit');
 const popupProfileEditCaption = document.querySelector('.popup__caption_profile-edit');
+const popupProfileEditSubmitButton = document.querySelector('.popup__submit-button_profile-edit');
 
 //Profile edit events
 profileEditButton.addEventListener('click', showProfileEditPopup);
@@ -19,9 +25,17 @@ popupProfileEditCloseIcon.addEventListener('click', function() {
 popupProfileEditContainer.addEventListener('submit', setNewProfileInfo);
 
 //Profile edit functions
+const validationCheck = (container, config) => {
+  popupInputList(container).forEach((input) => {
+    checkInputValidity(container, input, config);
+  });
+}
+
 function showProfileEditPopup() {
   popupProfileEditName.value = profileName.textContent;
   popupProfileEditCaption.value = profileCaption.textContent;
+  validationCheck(popupProfileEditContainer, validationConfig);
+  toggleButtonState(popupInputList(popupProfileEditContainer), popupProfileEditSubmitButton, validationConfig);
   openPopup(popupProfileEdit);
 }
 
@@ -40,6 +54,7 @@ const popupAddPlaceCloseIcon = document.querySelector('.popup__close-icon_add-pl
 const popupAddPlaceContainer = document.querySelector('.popup__container_add-place');
 const popupAddPlaceName = document.querySelector('.popup__name_add-place');
 const popupAddPlaceLink = document.querySelector('.popup__caption_add-place');
+const popupAddPlaceSubmitButton = document.querySelector('.popup__submit-button_add-place')
 
 //Place card events
 addPlaceButton.addEventListener('click', function() {
@@ -59,8 +74,8 @@ function placeCardPublic(evt) {
   const item = {name: popupAddPlaceName.value, link: popupAddPlaceLink.value};
   makePlaceCard (item);
   closePopup(popupAddPlace);
-  popupAddPlaceName.value = '';
-  popupAddPlaceLink.value = '';
+  popupAddPlaceContainer.reset();
+  toggleButtonState(popupInputList(popupAddPlaceContainer), popupAddPlaceSubmitButton, validationConfig);
 }
 
 //Function that makes place cards
@@ -105,33 +120,34 @@ popupImageCloseButton.addEventListener('click', function() {
 });
 
 //POPUP OPENING AND CLOSING
+
+const easyClose = function (evt) {
+  const popupActive = document.querySelector('.popup_opened');
+  if (evt.key === 'Escape') {
+    closePopup(popupActive);
+  }
+}
+
 //Show popup function
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  easyClose();
+  document.addEventListener('keydown', easyClose);
 }
 
 //Close popup function
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', easyClose);
 }
 
-//Close popup by clicking on empty space and Esc button pressing
-const easyClose = () => {
-    const popupElement = document.querySelector('.popup_opened');
-
-    addEventListener('keydown', function (evt) {
-        if (evt.key === 'Escape') {
-            closePopup(popupElement);
-        }
-    });
-
-    popupElement.addEventListener('click', function (evt) {
-        if (evt.target === popupElement) {
-            closePopup(popupElement);
-        }
-    });
-}
+const popupList = Array.from(document.querySelectorAll('.popup'));
+popupList.forEach((popupElement) => {
+  popupElement.addEventListener('click', function(evt) {
+    if (evt.target === popupElement) {
+      closePopup(popupElement);
+    }
+  });
+});
 
 //INITIAL CARDS RENDER
 //Initial cards elements
