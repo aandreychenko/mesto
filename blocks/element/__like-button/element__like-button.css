@@ -8,6 +8,7 @@
 	border: none;
 	margin-right: 18px;
 	transition: .2s ease-in-out;
+	cursor: pointer;
 }
 
 .element__like-button:hover {

@@ -1,3 +1,6 @@
+import {initialCards} from './initial-cards.js';
+import Card from './Card.js';
+
 //INPUT FIELDS SEARCHING
 const popupInputList = (container) => {
   return Array.from(container.querySelectorAll('.popup__field'));
@@ -46,8 +49,8 @@ function setNewProfileInfo(evt) {
   closePopup(popupProfileEdit);
 }
 
-//PLACE CARDS
-//Place card elements
+//PLACE CARDS ADDING
+//Elements of adding place card functionality
 const addPlaceButton = document.querySelector('.profile__add-button');
 const popupAddPlace = document.querySelector('.popup_add-place');
 const popupAddPlaceCloseIcon = document.querySelector('.popup__close-icon_add-place');
@@ -56,7 +59,7 @@ const popupAddPlaceName = document.querySelector('.popup__name_add-place');
 const popupAddPlaceLink = document.querySelector('.popup__caption_add-place');
 const popupAddPlaceSubmitButton = document.querySelector('.popup__submit-button_add-place')
 
-//Place card events
+//Place card adding form events
 addPlaceButton.addEventListener('click', function() {
   openPopup(popupAddPlace);
 });
@@ -72,49 +75,11 @@ popupAddPlaceContainer.addEventListener('submit', placeCardPublic);
 function placeCardPublic(evt) {
   evt.preventDefault();
   const item = {name: popupAddPlaceName.value, link: popupAddPlaceLink.value};
-  addCard(elementsContainer, createCard(item));
+  const card = new Card(item, '#element');
+  addCard(elementsContainer, card.generateCard());
   closePopup(popupAddPlace);
   popupAddPlaceContainer.reset();
   toggleButtonState(popupInputList(popupAddPlaceContainer), popupAddPlaceSubmitButton, validationConfig);
-}
-
-const like = (card) => {
-  card.querySelector('.element__like-button')
-      .addEventListener('click', function() {
-        this.classList.toggle('element__like-button_active')
-      });
-}
-
-const cardDelete = (card) => {
-  card.querySelector('.element__trash-button')
-      .addEventListener('click', function() {
-        this.parentElement.remove();
-      });
-}
-
-const popupViewer = (card) => {
-  card.querySelector('.element__image')
-      .addEventListener ('click', function showImagePopup() {
-        popupImageView.src = this.src;
-        const element = this.parentElement;
-        const placeName = element.querySelector('.element__place-name');
-        popupImageCaption.textContent = placeName.textContent;
-        openPopup(popupImage);
-      });
-}
-
-function createCard(item) {
-  const placeCard = elementTemplate.cloneNode(true);
-  //Assigning image source and place name
-  placeCard.querySelector('.element__image').src = item.link;
-  placeCard.querySelector('.element__place-name').textContent = item.name;
-  //Adding like function
-  like(placeCard);
-  //Adding card deleting function
-  cardDelete(placeCard);
-  //Adding image viewer popup function
-  popupViewer(placeCard);
-  return placeCard;
 }
 
 function addCard(container, card) {
@@ -124,8 +89,6 @@ function addCard(container, card) {
 //IMAGE VIEWER
 //Image viewer elements
 const popupImage = document.querySelector('.popup_image');
-const popupImageView = document.querySelector('.popup__image');
-const popupImageCaption = document.querySelector('.popup__image-caption');
 const popupImageCloseButton = document.querySelector('.popup__close-icon_image');
 
 //Image viewer events
@@ -134,7 +97,6 @@ popupImageCloseButton.addEventListener('click', function() {
 });
 
 //POPUP OPENING AND CLOSING
-
 const easyClose = function (evt) {
   const popupActive = document.querySelector('.popup_opened');
   if (evt.key === 'Escape') {
@@ -166,9 +128,11 @@ popupList.forEach((popupElement) => {
 //INITIAL CARDS RENDER
 //Initial cards elements
 const elementsContainer = document.querySelector('.elements');
-const elementTemplate = document.querySelector('#element').content;
 
 //Initial cards producing
 initialCards.forEach(function (item) {
-  addCard(elementsContainer, createCard(item));
+  const card = new Card(item, '#element');
+  addCard(elementsContainer, card.generateCard());
 });
+
+export { openPopup };

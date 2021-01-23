@@ -8,6 +8,7 @@
   background: none;
   background-image: url('../../../images/Trash.svg');
   transition: .2s ease-in-out;
+  cursor: pointer;
 }
 
 .element__trash-button:hover {
