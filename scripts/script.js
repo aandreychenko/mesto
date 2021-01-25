@@ -1,10 +1,6 @@
 import {initialCards} from './initial-cards.js';
 import Card from './Card.js';
-
-//INPUT FIELDS SEARCHING
-const popupInputList = (container) => {
-  return Array.from(container.querySelectorAll('.popup__field'));
-}
+import {validationConfig, FormValidator} from './FormValidator.js';
 
 //PROFILE EDIT
 //Profile edit elements
@@ -16,7 +12,6 @@ const profileName = document.querySelector('.profile__name');
 const profileCaption = document.querySelector('.profile__caption');
 const popupProfileEditName = document.querySelector('.popup__name_profile-edit');
 const popupProfileEditCaption = document.querySelector('.popup__caption_profile-edit');
-const popupProfileEditSubmitButton = document.querySelector('.popup__submit-button_profile-edit');
 
 //Profile edit events
 profileEditButton.addEventListener('click', showProfileEditPopup);
@@ -28,17 +23,11 @@ popupProfileEditCloseIcon.addEventListener('click', function() {
 popupProfileEditContainer.addEventListener('submit', setNewProfileInfo);
 
 //Profile edit functions
-const validationCheck = (container, config) => {
-  popupInputList(container).forEach((input) => {
-    checkInputValidity(container, input, config);
-  });
-}
-
 function showProfileEditPopup() {
   popupProfileEditName.value = profileName.textContent;
   popupProfileEditCaption.value = profileCaption.textContent;
-  validationCheck(popupProfileEditContainer, validationConfig);
-  toggleButtonState(popupInputList(popupProfileEditContainer), popupProfileEditSubmitButton, validationConfig);
+  new FormValidator(popupProfileEdit, validationConfig)
+      .enableValidation(popupProfileEdit);
   openPopup(popupProfileEdit);
 }
 
@@ -57,11 +46,12 @@ const popupAddPlaceCloseIcon = document.querySelector('.popup__close-icon_add-pl
 const popupAddPlaceContainer = document.querySelector('.popup__container_add-place');
 const popupAddPlaceName = document.querySelector('.popup__name_add-place');
 const popupAddPlaceLink = document.querySelector('.popup__caption_add-place');
-const popupAddPlaceSubmitButton = document.querySelector('.popup__submit-button_add-place')
 
 //Place card adding form events
 addPlaceButton.addEventListener('click', function() {
   openPopup(popupAddPlace);
+  new FormValidator(popupAddPlace, validationConfig)
+      .enableValidation(popupAddPlace);
 });
 
 popupAddPlaceCloseIcon.addEventListener('click', function() {
@@ -79,7 +69,6 @@ function placeCardPublic(evt) {
   addCard(elementsContainer, card.generateCard());
   closePopup(popupAddPlace);
   popupAddPlaceContainer.reset();
-  toggleButtonState(popupInputList(popupAddPlaceContainer), popupAddPlaceSubmitButton, validationConfig);
 }
 
 function addCard(container, card) {
@@ -135,4 +124,5 @@ initialCards.forEach(function (item) {
   addCard(elementsContainer, card.generateCard());
 });
 
+//EXPORTING FUNCTIONS
 export { openPopup };
