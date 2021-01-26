@@ -1,4 +1,4 @@
-import { openPopup } from "./script.js";
+import {openPopup} from "./utils/utils.js";
 
 export default class Card {
   constructor(data, template) {
@@ -38,6 +38,7 @@ export default class Card {
           const popupImageView = document.querySelector('.popup__image');
           const popupImageCaption = document.querySelector('.popup__image-caption');
           popupImageView.src = this.src;
+          popupImageView.alt = this.alt;
           const element = this.parentElement;
           const placeName = element.querySelector('.element__place-name');
           popupImageCaption.textContent = placeName.textContent;
@@ -45,13 +46,19 @@ export default class Card {
         });
   }
 
-  generateCard() {
-    this._element = this._getTemplate();
-    this._element.querySelector('.element__image').src = this._link;
-    this._element.querySelector('.element__place-name').textContent = this._name;
+  _setEventListeners() {
     this._like();
     this._cardDelete();
     this._popupViewer();
+  }
+
+  generateCard() {
+    this._element = this._getTemplate();
+    const image = this._element.querySelector('.element__image');
+    image.src = this._link;
+    image.alt =  `На фотографии — ${this._name}`;
+    this._element.querySelector('.element__place-name').textContent = this._name;
+    this._setEventListeners();
 
     return this._element;
   }

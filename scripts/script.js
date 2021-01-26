@@ -1,3 +1,4 @@
+import {openPopup, closePopup} from './utils/utils.js';
 import {initialCards} from './initial-cards.js';
 import Card from './Card.js';
 import {validationConfig, FormValidator} from './FormValidator.js';
@@ -22,12 +23,15 @@ popupProfileEditCloseIcon.addEventListener('click', function() {
 
 popupProfileEditContainer.addEventListener('submit', setNewProfileInfo);
 
+//Profile validator
+const profileEditValidator = new FormValidator(popupProfileEdit, validationConfig);
+
 //Profile edit functions
 function showProfileEditPopup() {
   popupProfileEditName.value = profileName.textContent;
   popupProfileEditCaption.value = profileCaption.textContent;
-  new FormValidator(popupProfileEdit, validationConfig)
-      .enableValidation(popupProfileEdit);
+  profileEditValidator.enableValidation(popupProfileEdit);
+  profileEditValidator.resetValidation(popupProfileEdit);
   openPopup(popupProfileEdit);
 }
 
@@ -47,25 +51,34 @@ const popupAddPlaceContainer = document.querySelector('.popup__container_add-pla
 const popupAddPlaceName = document.querySelector('.popup__name_add-place');
 const popupAddPlaceLink = document.querySelector('.popup__caption_add-place');
 
+//Place card validator
+const addPlaceValidator = new FormValidator(popupAddPlace, validationConfig);
+
 //Place card adding form events
 addPlaceButton.addEventListener('click', function() {
   openPopup(popupAddPlace);
-  new FormValidator(popupAddPlace, validationConfig)
-      .enableValidation(popupAddPlace);
+  addPlaceValidator.enableValidation(popupAddPlace);
 });
 
 popupAddPlaceCloseIcon.addEventListener('click', function() {
   closePopup(popupAddPlace);
+  popupAddPlaceContainer.reset();
+  addPlaceValidator.resetValidation(popupAddPlace);
 });
 
 popupAddPlaceContainer.addEventListener('submit', placeCardPublic);
 
 //Place card functions
+//Creating card
+function createCard(item, template) {
+  return new Card(item, template);
+}
+
 //Publishing card from the adding form
 function placeCardPublic(evt) {
   evt.preventDefault();
   const item = {name: popupAddPlaceName.value, link: popupAddPlaceLink.value};
-  const card = new Card(item, '#element');
+  const card = createCard(item, '#element');
   addCard(elementsContainer, card.generateCard());
   closePopup(popupAddPlace);
   popupAddPlaceContainer.reset();
@@ -85,26 +98,6 @@ popupImageCloseButton.addEventListener('click', function() {
   closePopup(popupImage);
 });
 
-//POPUP OPENING AND CLOSING
-const easyClose = function (evt) {
-  const popupActive = document.querySelector('.popup_opened');
-  if (evt.key === 'Escape') {
-    closePopup(popupActive);
-  }
-}
-
-//Show popup function
-function openPopup(popup) {
-  popup.classList.add('popup_opened');
-  document.addEventListener('keydown', easyClose);
-}
-
-//Close popup function
-function closePopup(popup) {
-  popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', easyClose);
-}
-
 const popupList = Array.from(document.querySelectorAll('.popup'));
 popupList.forEach((popupElement) => {
   popupElement.addEventListener('click', function(evt) {
@@ -120,9 +113,6 @@ const elementsContainer = document.querySelector('.elements');
 
 //Initial cards producing
 initialCards.forEach(function (item) {
-  const card = new Card(item, '#element');
+  const card = createCard(item, '#element');
   addCard(elementsContainer, card.generateCard());
 });
-
-//EXPORTING FUNCTIONS
-export { openPopup };

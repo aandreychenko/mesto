@@ -78,6 +78,13 @@ class FormValidator {
       });
     this._setEventListeners();
     }
+
+  resetValidation = () => {
+    const inputList = Array.from(this.formSelector.querySelectorAll(this._inputSelector));
+    inputList.forEach((inputElement) => {
+        this._hideInputError(inputElement);
+      });
+  }
 }
 
-export { validationConfig, FormValidator };
+export {validationConfig, FormValidator};
