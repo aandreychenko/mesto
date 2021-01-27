@@ -25,12 +25,12 @@ popupProfileEditContainer.addEventListener('submit', setNewProfileInfo);
 
 //Profile validator
 const profileEditValidator = new FormValidator(popupProfileEdit, validationConfig);
+profileEditValidator.enableValidation(popupProfileEdit);
 
 //Profile edit functions
 function showProfileEditPopup() {
   popupProfileEditName.value = profileName.textContent;
   popupProfileEditCaption.value = profileCaption.textContent;
-  profileEditValidator.enableValidation(popupProfileEdit);
   profileEditValidator.resetValidation(popupProfileEdit);
   openPopup(popupProfileEdit);
 }
@@ -53,11 +53,11 @@ const popupAddPlaceLink = document.querySelector('.popup__caption_add-place');
 
 //Place card validator
 const addPlaceValidator = new FormValidator(popupAddPlace, validationConfig);
+addPlaceValidator.enableValidation(popupAddPlace);
 
 //Place card adding form events
 addPlaceButton.addEventListener('click', function() {
   openPopup(popupAddPlace);
-  addPlaceValidator.enableValidation(popupAddPlace);
 });
 
 popupAddPlaceCloseIcon.addEventListener('click', function() {
