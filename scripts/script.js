@@ -1,3 +1,4 @@
+import '../pages/index.css';
 import {openPopup, closePopup} from './utils/utils.js';
 import {initialCards} from './initial-cards.js';
 import Card from './Card.js';

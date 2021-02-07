@@ -1,26 +1,33 @@
+import minskImage from '../images/element__image-minsk.jpg';
+import kaliningradImage from '../images/element__image-kaliningrad.jpg';
+import moscowImage from '../images/element__image-moscow.jpg';
+import ammanImage from '../images/element__image-amman.jpg';
+import wadirumImage from '../images/element__image-wadirum.jpg';
+import damascusImage from '../images/element__image-damascus.jpg';
+
 export const initialCards = [
     {
         name: 'Минск',
-        link: './images/element__image-minsk.jpg'
+        link: minskImage
     },
     {
         name: 'Калининград',
-        link: './images/element__image-kaliningrad.jpg'
+        link: kaliningradImage
     },
     {
         name: 'Москва',
-        link: './images/element__image-moscow.jpg'
+        link: moscowImage
     },
     {
         name: 'Амман',
-        link: './images/element__image-amman.jpg'
+        link: ammanImage
     },
     {
         name: 'Вади Рам',
-        link: './images/element__image-wadirum.jpg'
+        link: wadirumImage
     },
     {
         name: 'Дамаск',
-        link: './images/element__image-damascus.jpg'
+        link: damascusImage
     }
 ];
