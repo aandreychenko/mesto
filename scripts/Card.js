@@ -1,10 +1,13 @@
-import {openPopup} from "./utils/utils.js";
+/*Not ready*/
+
+import PopupWithImage from "./PopupWithImage";
 
 export default class Card {
-  constructor(data, template) {
+  constructor({data, handleCardClick}, template) {
     this._link = data.link;
     this._name = data.name;
     this._template = template;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -33,16 +36,12 @@ export default class Card {
 
   _popupViewer() {
     this._element.querySelector('.element__image')
-        .addEventListener ('click', function showImagePopup() {
+        .addEventListener ('click', () => {
           const popupImage = document.querySelector('.popup_image');
-          const popupImageView = document.querySelector('.popup__image');
-          const popupImageCaption = document.querySelector('.popup__image-caption');
-          popupImageView.src = this.src;
-          popupImageView.alt = this.alt;
-          const element = this.parentElement;
-          const placeName = element.querySelector('.element__place-name');
-          popupImageCaption.textContent = placeName.textContent;
-          openPopup(popupImage);
+          const cardImage = this._element.querySelector('.element__image');
+          const placeName = this._element.querySelector('.element__place-name');
+          const popupWithImage = new PopupWithImage(popupImage, cardImage, placeName.textContent);
+          popupWithImage.open();
         });
   }
 
