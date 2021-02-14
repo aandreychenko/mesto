@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto</title>
-    <link rel="stylesheet" href="./pages/index.css">
   </head>
   <body>
   <div class="page">
@@ -33,11 +32,11 @@
       <form class="popup__container popup__container_profile-edit popup__form" name="profile-edit" novalidate>
         <h3 class="popup__heading popup__heading_profile-edit">Редактировать профиль</h3>
         <label for="name-profile-edit" class="popup__container-label">
-          <input type="text" name="username" class="popup__field popup__name popup__name_profile-edit popup__input" id="name-profile-edit" placeholder="Имя" aria-label="Имя профиля" required minlength="2" maxlength="40">
+          <input type="text" name="name" class="popup__field popup__name popup__name_profile-edit popup__input" id="name-profile-edit" placeholder="Имя" aria-label="Имя профиля" required minlength="2" maxlength="40">
           <span class="popup__error popup__error_visible name-profile-edit-error"></span>
         </label>
         <label for="caption-profile-edit" class="popup__container-label">
-          <input type="text" name="profile-caption" class="popup__field popup__caption popup__caption_profile-edit popup__input" id="caption-profile-edit" placeholder="Вид деятельности" aria-label="Описание профиля" required minlength="2" maxlength="200">
+          <input type="text" name="caption" class="popup__field popup__caption popup__caption_profile-edit popup__input" id="caption-profile-edit" placeholder="Вид деятельности" aria-label="Описание профиля" required minlength="2" maxlength="200">
           <span class="popup__error popup__error_visible caption-profile-edit-error"></span>
         </label>
         <button type="submit" name="submit-button" class="popup__submit-button popup__submit-button_profile-edit popup__button popup__button_disabled" id="popup__submit-button" aria-labelledby="popup__submit-button">Сохранить</button>
@@ -77,6 +76,5 @@
       <button type="button" class="element__trash-button"></button>
     </article>
   </template>
-  <script type="module" src="scripts/script.js"></script>
   </body>
 </html>

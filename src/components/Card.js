@@ -1,16 +1,12 @@
-/*Not ready*/
-
-import PopupWithImage from "./PopupWithImage";
-
 export default class Card {
   constructor({data, handleCardClick}, template) {
     this._link = data.link;
     this._name = data.name;
-    this._template = template;
     this._handleCardClick = handleCardClick;
+    this._template = template;
   }
 
-  _getTemplate() {
+  _getTemplate = () => {
     const cardElement = document
         .querySelector(this._template)
         .content
@@ -20,38 +16,37 @@ export default class Card {
     return cardElement;
   }
 
-  _like() {
+  _like = () => {
     this._element.querySelector('.element__like-button')
         .addEventListener('click', function() {
           this.classList.toggle('element__like-button_active')
         });
   }
 
-  _cardDelete() {
+  _cardDelete = () => {
     this._element.querySelector('.element__trash-button')
         .addEventListener('click', function() {
           this.parentElement.remove();
         });
   }
 
-  _popupViewer() {
-    this._element.querySelector('.element__image')
-        .addEventListener ('click', () => {
-          const popupImage = document.querySelector('.popup_image');
-          const cardImage = this._element.querySelector('.element__image');
-          const placeName = this._element.querySelector('.element__place-name');
-          const popupWithImage = new PopupWithImage(popupImage, cardImage, placeName.textContent);
-          popupWithImage.open();
-        });
+  _showImage = () => {
+    this._handleCardClick(this._link, this._name);
   }
 
-  _setEventListeners() {
+
+  _popupViewer = () => {
+    this._element.querySelector('.element__image')
+        .addEventListener ('click', this._showImage);
+  }
+
+  _setEventListeners = () => {
     this._like();
     this._cardDelete();
     this._popupViewer();
   }
 
-  generateCard() {
+  generateCard = () => {
     this._element = this._getTemplate();
     const image = this._element.querySelector('.element__image');
     image.src = this._link;
