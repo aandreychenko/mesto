@@ -1,5 +1,5 @@
 import './index.css';
-import {initialCards} from '../scripts/initial-cards.js';
+import {constants} from '../vendor/constants.js';
 import Card from '../components/Card.js';
 import {validationConfig, FormValidator} from '../components/FormValidator.js';
 import Section from "../components/Section.js";
@@ -64,7 +64,7 @@ profileEditPopup.setEventListeners();
 
 /*Initializing card inserting class*/
 const cardList = new Section({
-      items: initialCards,
+      items: constants,
       renderer: (data) => {
         const card = createCard(data);
 
