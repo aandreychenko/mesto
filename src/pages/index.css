@@ -17,6 +17,7 @@
 /* Блок profile */
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__avatar-edit-icon/profile__avatar-container.css);
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__info-heading/profile__info-heading.css);
 @import url(../blocks/profile/__name/profile__name.css);
@@ -33,6 +34,7 @@
 @import url(../blocks/element/__image/element__image.css);
 @import url(../blocks/element/__place-name/element__place-name.css);
 @import url(../blocks/element/__like-button/element__like-button.css);
+@import url(../blocks/element/__like-counter/element__like-counter.css);
 @import url(../blocks/element/__like-button/_active/element__like-button_active.css);
 @import url(../blocks/element/__trash-button/element__trash-button.css);
 

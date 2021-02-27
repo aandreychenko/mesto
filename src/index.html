@@ -12,13 +12,15 @@
     </header>
     <main class="main">
       <section class="profile">
-        <img class="profile__avatar" src="<%=require('./images/profile__avatar.jpg')%>" alt="Фотография профиля">
+        <a class="profile__avatar-container">
+          <img class="profile__avatar" alt="Фотография профиля">
+        </a>
         <div class="profile__info">
           <div class="profile__info-heading">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <h1 class="profile__name"></h1>
             <button type="button" class="profile__edit-button" aria-label="Редактировать профиль"></button>
           </div>
-          <p class="profile__caption">Исследователь океана</p>
+          <p class="profile__caption"></p>
         </div>
         <button type="button" class="profile__add-button" aria-label="Добавить карточку"></button>
       </section>
@@ -36,7 +38,7 @@
           <span class="popup__error popup__error_visible name-profile-edit-error"></span>
         </label>
         <label for="caption-profile-edit" class="popup__container-label">
-          <input type="text" name="caption" class="popup__field popup__caption popup__caption_profile-edit popup__input" id="caption-profile-edit" placeholder="Вид деятельности" aria-label="Описание профиля" required minlength="2" maxlength="200">
+          <input type="text" name="about" class="popup__field popup__caption popup__caption_profile-edit popup__input" id="caption-profile-edit" placeholder="Вид деятельности" aria-label="Описание профиля" required minlength="2" maxlength="200">
           <span class="popup__error popup__error_visible caption-profile-edit-error"></span>
         </label>
         <button type="submit" name="submit-button" class="popup__submit-button popup__submit-button_profile-edit popup__button popup__button_disabled" id="popup__submit-button" aria-labelledby="popup__submit-button">Сохранить</button>
@@ -65,13 +67,34 @@
         <button type="button" name="close-button" class="popup__close-icon popup__close-icon_image" aria-label="Закрыть  картинку"></button>
       </div>
     </div>
+    <div class="popup popup_user-image">
+      <form class="popup__container popup__container_user-image popup__form" name="user-image" novalidate>
+        <h3 class="popup__heading popup__heading_user-image">Обновить аватар</h3>
+        <label for="link-user-image" class="popup__container-label">
+          <input type="url" name="link" class="popup__field popup__caption popup__caption_user-image popup__input" id="link-user-image" placeholder="Ссылка на картинку" aria-label="Ссылка на картинку" required minlength="1">
+          <span class="popup__error popup__error_visible link-user-image-error"></span>
+        </label>
+        <button type="submit" name="submit-avatar-button" class="popup__submit-button popup__submit-button_user-image popup__button popup__button_disabled" id="popup__submit-avatar-button" aria-labelledby="popup__submit-button">Сохранить</button>
+        <button type="button" name="close-button" class="popup__close-icon popup__close-icon_user-image" aria-label="Закрыть форму загрузки аватара"></button>
+      </form>
+    </div>
+    <div class="popup popup_card-delete">
+      <form class="popup__container popup__container_card-delete popup__form" name="card-delete" novalidate>
+        <h3 class="popup__heading popup__heading_card-delete">Вы уверены?</h3>
+        <button type="submit" name="submit-button" class="popup__submit-button popup__submit-button_card-delete popup__button" id="popup__delete-button" aria-labelledby="popup__delete-button">Да</button>
+        <button type="button" name="close-button" class="popup__close-icon popup__close-icon_card-delete" aria-label="Закрыть попап подтверждения удаления карточки"></button>
+      </form>
+    </div>
   </div>
   <template id="element">
     <article class="element">
       <img class="element__image" src="#" alt="Фотография места">
       <div class="element__info">
         <h2 class="element__place-name"></h2>
-        <button type="button" class="element__like-button"></button>
+        <div class="element__like-block">
+          <button type="button" class="element__like-button"></button>
+          <p class="element__like-counter">0</p>
+        </div>
       </div>
       <button type="button" class="element__trash-button"></button>
     </article>

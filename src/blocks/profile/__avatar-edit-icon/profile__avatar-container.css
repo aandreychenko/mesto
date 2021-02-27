@@ -1,0 +1,88 @@
+.profile__avatar-container{
+  display: block;
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/*.profile__avatar{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}*/
+
+.profile__avatar-container:before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000;
+  opacity: 0;
+  transition: opacity .3s;
+}
+.profile__avatar-container:hover:before{
+  opacity: .8;
+}
+
+.profile__avatar-container:after{
+  content: "";
+  background-image: url('../../../images/icon-avatar-edit.svg');
+  width: 26px;
+  height: 26px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  opacity: 0;
+  transition: opacity .3s;
+}
+
+.profile__avatar-container:hover:after{
+  opacity: 1;
+}
+
+/*
+.profile__avatar-container {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+}
+
+!*.profile__avatar-container:hover {
+  opacity: .6;
+}*!
+
+!*.profile__avatar-container:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(../../../images/icon-edit.svg) center no-repeat;
+}*!
+
+!*.profile__avatar-container .profile__avatar {
+  opacity: .6;
+}*!
+
+.profile__avatar-container:hover:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(../../../images/icon-avatar-edit.svg) center no-repeat;
+}
+*/
