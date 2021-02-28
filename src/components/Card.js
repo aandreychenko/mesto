@@ -10,9 +10,6 @@ export default class Card {
     this._dataLink = data.link;
     this._dataLikes = data.likes;
     this._dataOwnerId = data.owner._id;
-    this._image.src = this._dataLink;
-    this._image.alt = `На фотографии — ${this._dataName}`;
-    this._elementName.textContent = this._dataName;
   }
 
   /* Generating card */
@@ -20,7 +17,10 @@ export default class Card {
     this._element = this._getTemplate();
 
     this._elementName = this._element.querySelector('.element__place-name');
+    this._elementName.textContent = this._dataName;
     this._image = this._element.querySelector('.element__image');
+    this._image.src = this._dataLink;
+    this._image.alt = `На фотографии — ${this._dataName}`;
     this._likeButton = this._element.querySelector('.element__like-button');
     this._likeCounter = this._element.querySelector('.element__like-counter');
     this._trashButton = this._element.querySelector('.element__trash-button');
