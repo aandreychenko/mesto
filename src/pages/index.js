@@ -49,13 +49,17 @@ const userInfo = new UserInfo({
   userImage: profileConfig.profileImage
 });
 
-/* Getting user text information */
-api.getUserInfo()
-    .then(result => {
-      myId = result._id;
-      userInfo.setUserInfo(result);
+api._getAllInfo()
+    .then(([dataUser, cardsData]) => {
+
+      cardList.renderItems(cardsData);
+
+      myId = dataUser._id;
+      userInfo.setUserInfo(dataUser);
       userInfo.updateUserInfo();
-    });
+})
+.catch((err) => console.log(err));
+
 
 /* New object of PopupWithForm class */
 const profileEditPopup = new PopupWithForm({
@@ -69,6 +73,7 @@ profileEditPopup.setEventListeners((data) => {
         userInfo.setUserInfo(result);
         userInfo.updateUserInfo();
       })
+      .catch(err => console.log(err))
       .finally(() => {
         renderLoading();
         profileEditPopup.close();
@@ -101,6 +106,7 @@ avatarUpdPopup.setEventListeners((data) => {
         userInfo.setUserInfo(result);
         userInfo.updateUserInfo();
       })
+      .catch(err => console.log(err))
       .finally(() => {
         renderLoading();
         avatarUpdPopup.close();
@@ -129,23 +135,14 @@ const cardList = new Section(
     '.elements'
 );
 
-/* Getting cards from server */
-api.getCards()
-    .then((res) => {
-      cardList.renderItems(res);
-    })
-    .catch((err) => console.log(err))
-
 /* Initializing Card class for cards producing */
 function createCard(data) {
   const card = new Card({data, myId, handleCardClick, handleLikeClick, handleDeleteIconClick}, '#element');
-  return card.generateCard(data);
+  return card.generateCard();
 }
 
 /* Setting listener of adding place button */
 addPlaceButton.addEventListener('click', () => {
-  popupPlaceAddName.value = '';
-  popupPlaceAddCaption.value = '';
   cardsValidation.resetValidation();
   cardAddPopup.open();
 });
@@ -166,6 +163,7 @@ cardAddPopup.setEventListeners((data) => {
             const cardElement = createCard(result);
             cardList.addItem(cardElement, true);
           })
+          .catch(err => console.log(err))
           .finally(() => {
             renderLoading();
             cardAddPopup.close();
@@ -203,7 +201,6 @@ function handleLikeClick(data, element, likeAdd, likeRemove, likeButton) {
         likeRemove(likeButton);
         setLikeCounter(element, res.likes.length);
       })
-
       .catch(err => console.log(err));
   }
 }

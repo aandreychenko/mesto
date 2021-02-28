@@ -2,30 +2,29 @@ export default class Card {
   constructor({data, myId, handleCardClick, handleLikeClick, handleDeleteIconClick}, template) {
     this._template = template;
     this._myId = myId;
+    this._data = data;
     this._handleCardClick = handleCardClick;
     this._handleLikeClick = handleLikeClick;
     this._handleDeleteIconClick = handleDeleteIconClick;
+    this._dataName = data.name;
+    this._dataLink = data.link;
+    this._dataLikes = data.likes;
+    this._dataOwnerId = data.owner._id;
+    this._image.src = this._dataLink;
+    this._image.alt = `На фотографии — ${this._dataName}`;
+    this._elementName.textContent = this._dataName;
   }
 
   /* Generating card */
-  generateCard(data) {
+  generateCard() {
     this._element = this._getTemplate();
-
-    this._data = data;
-    this._dataName = data.name;
-    this._dataLink = data.link;
-    /*console.log(`generateCard : ${this._dataLink}`);*/
-    this._dataLikes = data.likes;
-    this._dataOwnerId = data.owner._id;
 
     this._elementName = this._element.querySelector('.element__place-name');
     this._image = this._element.querySelector('.element__image');
     this._likeButton = this._element.querySelector('.element__like-button');
     this._likeCounter = this._element.querySelector('.element__like-counter');
     this._trashButton = this._element.querySelector('.element__trash-button');
-    this._image.src = this._dataLink;
-    this._image.alt = `На фотографии — ${this._dataName}`;
-    this._elementName.textContent = this._dataName;
+
     if (!this._trashCheck()) {
       this._trashHide(this._trashButton);
     }
